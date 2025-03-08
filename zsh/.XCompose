@@ -1,0 +1,7 @@
+ include "/usr/share/X11/locale/en_US.UTF-8/Compose"
+
+ # UTF-8 (Unicode) compose sequences
+
+ # Overrides C acute with Ccedilla:
+ <dead_acute> <C> : "Ç" "Ccedilla"
+ <dead_acute> <c> : "ç" "ccedilla"
