@@ -119,6 +119,19 @@ export NVM_DIR="$HOME/.nvm"
 
 bindkey '\t\t' autosuggest-accept
 
+function myGnomeSettings() {
+  # Set shortcuts for workspace 1
+  gsettings set org.gnome.desktop.wm.keybindings "switch-to-workspace-1" "['<Super>dead_grave']"
+  gsettings set org.gnome.desktop.wm.keybindings "move-to-workspace-1" "['<Super><Shift>grave']"
+
+  # Set shortcuts for workspaces 2 to 6
+  for i in $(seq 2 6); do
+    current=$((i - 1))
+    gsettings set org.gnome.desktop.wm.keybindings "switch-to-workspace-$i" "['<Super>$current']"
+    gsettings set org.gnome.desktop.wm.keybindings "move-to-workspace-$i" "['<Super><Shift>$current']"
+  done
+}
+
 export XDG_SESSION_TYPE=wayland
 export GDK_BACKEND=wayland
 export QT_QPA_PLATFORM=wayland
