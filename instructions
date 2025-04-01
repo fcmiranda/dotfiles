@@ -1,0 +1,12 @@
+oh my pac
+
+inicialização - cria arquivo omp-package.json com a nova versão do pacote
+Sempre que instalar deve ele adicionar omp-package.json a nova versão do pacote
+Usa stow para definir dotfiles
+
+
+
+
+
+
+
