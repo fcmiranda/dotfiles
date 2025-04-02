@@ -2,6 +2,18 @@ oh my pac
 
 inicialização - cria arquivo omp-package.json com a nova versão do pacote
 Sempre que instalar deve ele adicionar omp-package.json a nova versão do pacote
+
+criar pasta ~/omp
+instalar pacotes em omp
+omp(dotfiles), usara stow . para apontar para home
+assimm todos os arquivos ficarão em omp
+
+omp/.omz
+omp/fzf
+omp/nvm
+
+
+
 Usa stow para definir dotfiles
 
 

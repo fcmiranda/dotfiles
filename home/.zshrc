@@ -119,18 +119,29 @@ export NVM_DIR="$HOME/.nvm"
 
 bindkey '\t\t' autosuggest-accept
 
-function myGnomeSettings() {
+setFlameshot () {
+  gsettings set org.gnome.settings-daemon.plugins.media-keys show-screenshot-ui '[]'
+  gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"
+  gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ name 'flameshot'
+  gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon.plugins.media-keys/custom-keybindings/custom0/ command '/home/felipe/.local/bin/flameshot qui'
+  gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon.plugins.media-keys/custom-keybindings/custom0/ binding 'Print'
+  gsettings get org.gnome.settings-daemon.plugins.media-keys custom-keybindings
+}
+
+function setWorkspaceKeybindings() {
   # Set shortcuts for workspace 1
   gsettings set org.gnome.desktop.wm.keybindings "switch-to-workspace-1" "['<Super>dead_grave']"
   gsettings set org.gnome.desktop.wm.keybindings "move-to-workspace-1" "['<Super><Shift>grave']"
 
   # Set shortcuts for workspaces 2 to 6
-  for i in $(seq 2 6); do
-    current=$((i - 1))
-    gsettings set org.gnome.desktop.wm.keybindings "switch-to-workspace-$i" "['<Super>$current']"
-    gsettings set org.gnome.desktop.wm.keybindings "move-to-workspace-$i" "['<Super><Shift>$current']"
+  for i in $(seq 1 5); do
+    wk=$((i + 1))
+    gsettings set org.gnome.desktop.wm.keybindings "switch-to-workspace-$wk" "[]"
+    gsettings set org.gnome.desktop.wm.keybindings "switch-to-workspace-$wk" "['<Super>$i']"
+    gsettings set org.gnome.desktop.wm.keybindings "move-to-workspace-$wk" "['<Super><Shift>$i']"
   done
 }
+setWorkspaceKeybindings
 
 # export XDG_SESSION_TYPE=wayland
 # export GDK_BACKEND=wayland
